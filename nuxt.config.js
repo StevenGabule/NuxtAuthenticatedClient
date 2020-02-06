@@ -1,6 +1,9 @@
 
 export default {
   mode: 'universal',
+  router: {
+    middleware: ['ClearValidation']
+  },
   /*
   ** Headers of the page
   */
@@ -28,6 +31,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    './plugins/mixins/validation',
+    './plugins/axios',
   ],
   /*
   ** Nuxt.js dev-modules
