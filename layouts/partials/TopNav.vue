@@ -12,8 +12,8 @@
           </b-navbar-nav>
 
           <b-navbar-nav class="ml-auto">
-            <b-nav-item to="/login" class="nav-link">Login</b-nav-item>
-            <b-nav-item to="/register" class="nav-link">Register</b-nav-item>
+            <b-nav-item to="/auth/login" class="nav-link">Login</b-nav-item>
+            <b-nav-item to="/auth/register" class="nav-link">Register</b-nav-item>
           </b-navbar-nav>
         </b-collapse>
       </div>

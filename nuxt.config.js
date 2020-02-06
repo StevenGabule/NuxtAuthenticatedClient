@@ -42,20 +42,36 @@ export default {
     'bootstrap-vue/nuxt',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/auth',
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    baseURL: "http://127.0.0.1:8000/api"
+  },
+
+  auth: {
+    strategies:{
+      local: {
+        endpoints: {
+          login: { url: 'auth/login', method: 'POST', propertyName: 'token' },
+          user: { url: 'me', method: 'GET', propertyName: 'data' },
+          logout: { url: 'logout', method: 'GET'}
+        }
+      }
+    },
+    redirect: {
+      login: '/auth/login',
+      home: '/'
+    }
   },
   /*
   ** Build configuration
   */
   build: {
-    /*
-    ** You can extend webpack config here
-    */
+    extractCSS: true,
     extend (config, ctx) {
     }
   }
