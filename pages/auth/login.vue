@@ -11,13 +11,15 @@
 
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" v-model="form.email" placeholder="Email" id="email" :class="{'is-invalid' : errors.email}">
+                <input type="email" class="form-control" v-model="form.email" placeholder="Email" id="email"
+                       :class="{'is-invalid' : errors.email}">
                 <div class="invalid-feedback" v-if="errors.email">{{ errors.email[0]}}</div>
 
               </div>
               <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" v-model="form.password" placeholder="Password" id="password" :class="{'is-invalid' : errors.password}">
+                <input type="password" class="form-control" v-model="form.password" placeholder="Password" id="password"
+                       :class="{'is-invalid' : errors.password}">
                 <div class="invalid-feedback" v-if="errors.password">{{ errors.password[0]}}</div>
 
               </div>
@@ -34,6 +36,7 @@
 
 <script>
     export default {
+        middleware: 'guest',
         name: "register",
         data() {
             return {
@@ -47,8 +50,8 @@
             async login() {
                 try {
                     await this.$auth.login({data: this.form});
-                    this.$router.push({name: 'index'});
-                } catch(e) {
+                    this.$router.push(this.$route.query.redirect ? this.$route.query.redirect : '/');
+                } catch (e) {
 
                 }
             }
